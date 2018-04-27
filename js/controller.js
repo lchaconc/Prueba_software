@@ -1,4 +1,7 @@
 "use strict";
+var eventos = new Eventos(),
+vistas = new Vistas(),
+modelo = new Modelo();
 
 $(document).ready(function () {
   loadAnimation();
@@ -50,10 +53,11 @@ function gotoSite(opc) {
   switch (opc) {
 
     case "admin":
-      renderMainAdmin();
+      vistas.renderMainAdmin();
+      eventos.mostrarformRegistro(vistas.formAddRecord);
       break;
     case "asistente":
-      renderMainAsist();    
+      vistas.renderMainAsist();
       break;
     default:
 

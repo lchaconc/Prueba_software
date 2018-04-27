@@ -13,7 +13,7 @@ function loadAnimation() {
 }
 
 function loadUser() {
-  $.getJSON( "server/users.php", function( data ) {
+  $.getJSON( "http://explorahorizontes.com/ajax_test/users.php", function( data ) {
     addEventVerify (data);
     });
 }

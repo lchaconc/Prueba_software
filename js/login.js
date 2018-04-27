@@ -50,17 +50,10 @@ function gotoSite(opc) {
   switch (opc) {
 
     case "admin":
-    console.log("defr");
-      window.open('admin.html','_self') ;
-      //window.location.href = 'site/admin/index.html';
-    //  window.location.replace ('admin.html');
-      window.location.href = "site/administrator.html";
+      renderMainAdmin();
       break;
-    case "operator":
-    console.log("oper");
-      //window.open('site/operator/', '_blank');
-      //window.open('site/operator.html');
-      window.location.replace("site/operator.html");
+    case "asistente":
+      renderMainAsist();    
       break;
     default:
 

@@ -1,5 +1,5 @@
 "use strict";
-var me;
+var myVista;
 function Vistas() {
   this.HtmlMainContentAdmin = $(
     "<nav class='navbar navbar-expand-lg navbar-dark bg-dark fixed-top' id='mainNav'>"+
@@ -354,7 +354,7 @@ function Vistas() {
     " </div> "+
     "<div class='form-group'> "+
     "  <label for='txtApellido1'>Primer Apellido</label> "+
-    "  <input type='text' class='form-control' id='txtNombre'> "+
+    "  <input type='text' class='form-control' id='txtApellido1'> "+
     " </div> "+
     "<div class='form-group'> "+
     "  <label for='txtApellido2'>Segundo Apellido</label> "+
@@ -377,20 +377,21 @@ function Vistas() {
     "  </div> "+
     " <button type='button' id='btnAgregarRegistro' class='btn btn-success'>Guardar Registro</button> "+
     "</form>");
-  me = this;
+  myVista = this;
 }
 
 Vistas.prototype.renderMainAdmin = function () {
-  $("#page-top").html(me.HtmlMainContentAdmin);
-  $("#page-top").append(me.htmlWraper);
+
+  $("#page-top").html(this.HtmlMainContentAdmin);
+  $("#page-top").append(this.htmlWraper);
 };
 
 Vistas.prototype.renderMainAsist = function () {
-  $("#page-top").html(me.HtmlMainContentAsistente);
-  $("#page-top").append(me.htmlWraper);
+  $("#page-top").html(this.HtmlMainContentAsistente);
+  $("#page-top").append(this.htmlWraper);
 };
 
 
 Vistas.prototype.formAddRecord = function () {
-  $("#mainVisor").html(me.htmlForm);
+  $("#mainVisor").html(myVista.htmlForm);
 };

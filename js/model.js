@@ -52,3 +52,31 @@ Modelo.prototype.saveRecord = function (id, nombre, apellido1, apellido2, email,
     return done;
 
 };
+
+Modelo.prototype.getUserId = function (key) {
+  //Se obtiene lista de usuarios almacenados en local storage
+  var max = localStorage.length, user;
+  for (var i = 0; i < max; i++) {
+    if (key == localStorage.key(i)) {
+      user = $.parseJSON(localStorage.getItem(key))
+    }
+  };
+  // Devuelve el array con los registros almacenados en el LocalStorage
+  return user;
+};
+
+Modelo.prototype.getUsersDepto = function (depto) {
+	//Se obtiene lista de usuarios almacenados en local storage
+  var max = localStorage.length, users=[], user={};
+  for (var i = 0; i < max; i++) {
+    var k = localStorage.key(i);
+	// Convierte los datos del LocalStorage que son de tipo "String" a objeto "Json"
+      user = $.parseJSON(localStorage.getItem(k))
+      if (depto == user.depto) {
+        users.push(user);
+      }
+
+  };
+  // Devuelve el array con los registros almacenados en el LocalStorage
+  return users;
+};

@@ -1,5 +1,5 @@
 "use strict";
-var 
+var
 vistas = new Vistas(),
 modelo = new Modelo();
 
@@ -17,10 +17,20 @@ Eventos.prototype.mostrarformRegistro = function () {
   });
 };
 
-
 Eventos.prototype.agregarRegistro = function () {
   $("#btnAgregarRegistro").click(function () {
-      modelo.saveRecord($("#txtId").val(), $("#txtNombre").val(), $("#txtApellido1").val(), $("#txtApellido2").val(), $("#txtEmail").val(), "depto");
+    if (modelo.saveRecord($("#txtId").val(), $("#txtNombre").val(), $("#txtApellido1").val(), $("#txtApellido2").val(), $("#txtEmail").val(), $("#selDepto").val())) {
+        alert ("Registro agregado satisfactoriamente");
+        $("#txtId").val("");
+        $("#txtNombre").val("");
+        $("#txtApellido1").val("")
+        $("#txtApellido2").val("");
+        $("#txtEmail").val("");
+        $("#selDepto").val("0");
+    } else {
+      alert ("Problemas al intentar guardar registro");
+    }
+
   });
 };
 
@@ -29,8 +39,25 @@ Eventos.prototype.eventosGeneralesAdmin = function () {
     // TODO: Crear manejadores de eventos generales
 };
 
-
-
 Eventos.prototype.eventosGeneralesAsist = function () {
   vistas.renderMainAsist();
+};
+
+Eventos.prototype.eventosBuscarPorId = function () {
+  $("#linkPorId").click(function () {
+    vistas.formId();
+    $("#btnBuscarPorId").click(function () {
+      vistas.showRecordId(modelo.getUserId($("#txtId").val()));
+    })
+  })
+};
+
+Eventos.prototype.eventosBuscarPorDepto = function () {
+  $("#lnkDepto").click(function () {
+        vistas.ShowformDepto();
+        $("#btnBuscarPorDepto").click(function () {
+          vistas.tablaDepto(modelo.getUsersDepto($("#selDepto").val()));
+        })
+  })
+
 };

@@ -53,9 +53,13 @@ function gotoSite(opc) {
     case "admin":
       eventos.eventosGeneralesAdmin();
       eventos.mostrarformRegistro();
+      eventos.eventosBuscarPorId();
+      eventos.eventosBuscarPorDepto();
       break;
     case "asistente":
       eventos.eventosGeneralesAsist();
+      eventos.eventosBuscarPorId();
+      eventos.eventosBuscarPorDepto();
       break;
     default:
 

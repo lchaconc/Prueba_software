@@ -24,13 +24,13 @@ function Vistas() {
     "    <li class='nav-item' data-toggle='tooltip' data-placement='right' title='TablesId'>"+
     "      <a class='nav-link' href='#'>"+
     "        <i class='fa fa-fw fa-table'></i>"+
-    "        <span class='nav-link-text'>Consulta por ID</span>"+
+    "        <span id='linkPorId' class='nav-link-text' id='linkPorId'>Consulta por ID</span>"+
     "      </a>"+
     "    </li>"+
-    "    <li class='nav-item' data-toggle='tooltip' data-placement='right' title='TablesPuesto'>"+
+    "    <li class='nav-item' data-toggle='tooltip' data-placement='right' title='TablesDepto'>"+
     "      <a class='nav-link' href='#'>"+
     "        <i class='fa fa-fw fa-table'></i>"+
-    "        <span class='nav-link-text'>Consulta por Puesto</span>"+
+    "        <span id = 'lnkDepto' class='nav-link-text'>Consulta por Depto.</span>"+
     "      </a>"+
     "    </li>"+
     "    <li class='nav-item' data-toggle='tooltip' data-placement='right' title='Mantenimiento'>"+
@@ -183,13 +183,13 @@ function Vistas() {
     "    <li class='nav-item' data-toggle='tooltip' data-placement='right' title='TablesId'>"+
     "      <a class='nav-link' href='#'>"+
     "        <i class='fa fa-fw fa-table'></i>"+
-    "        <span class='nav-link-text'>Consulta por ID</span>"+
+    "        <span id='linkPorId' class='nav-link-text'>Consulta por ID</span>"+
     "      </a>"+
     "    </li>"+
-    "    <li class='nav-item' data-toggle='tooltip' data-placement='right' title='TablesPuesto'>"+
+    "    <li class='nav-item' data-toggle='tooltip' data-placement='right' title='TablesDepto'>"+
     "      <a class='nav-link' href='#'>"+
     "        <i class='fa fa-fw fa-table'></i>"+
-    "        <span class='nav-link-text'>Consulta por Puesto</span>"+
+    "        <span id='lnkDepto' class='nav-link-text'>Consulta por Depto.</span>"+
     "      </a>"+
     "    </li>"+
     "      <li class='nav-item' data-toggle='tooltip' data-placement='right' title='Link'>"+
@@ -367,16 +367,48 @@ function Vistas() {
     "  <div class='form-group'> "+
     "  <label for='selDepto'>Departamento</label> "+
     "  <select class='form-control' id='selDepto'> "+
-    "    <option>Selecciones una opción</option> "+
-    "    <option>Recursos Humanos</option> "+
-    "    <option>Finanzas</option> "+
-    "    <option>Tecnología de la infroamción</option> "+
-    "    <option>Proveeduría</option> "+
-    "    <option>Dirección</option> "+
+    "    <option value='0' >Selecciones una opción</option> "+
+    "    <option value='Recursos Humanos'>Recursos Humanos</option> "+
+    "    <option value='Finanzas'>Finanzas</option> "+
+    "    <option value='Tecnología de la infroamción'>Tecnología de la infroamción</option> "+
+    "    <option value='Proveeduría'>Proveeduría</option> "+
+    "    <option value='Dirección'>Dirección</option> "+
     "  </select> "+
     "  </div> "+
     " <button type='button' id='btnAgregarRegistro' class='btn btn-success'>Guardar Registro</button> "+
     "</form>");
+  this.htmlFormId = $(
+    "<div class='row'>"+
+    "<form class='form-inline'>"+
+    "  <div class='form-group mx-sm-3 mb-2'>"+
+    "    <label for='txtId' class='sr-only'>ID</label>"+
+    "    <input type='text' class='form-control' id='txtId' placeholder='Digite la identificación'>"+
+    "  </div>"+
+    "  <button type='button' id='btnBuscarPorId' class='btn btn-primary mb-2'>Buscar</button>"+
+    "</form>" +
+    "  </div>"+
+    "<hr>"+
+    "<div id='contTabla' class='row'></div>"  );
+  this.htmlFormDepto = $(
+      "<div class='row'>"+
+      "<form class='form-inline'>"+
+      "  <div class='form-group'> "+
+      "  <select class='form-control' id='selDepto'> "+
+      "    <option value='0' >Seleccione un departamento</option> "+
+      "    <option value='Recursos Humanos'>Recursos Humanos</option> "+
+      "    <option value='Finanzas'>Finanzas</option> "+
+      "    <option value='Tecnología de la infroamción'>Tecnología de la infroamción</option> "+
+      "    <option value='Proveeduría'>Proveeduría</option> "+
+      "    <option value='Dirección'>Dirección</option> "+
+      "  </select> "+
+      "  </div> "+
+      "  <button type='button' id='btnBuscarPorDepto' class='btn btn-primary mb-2'>Buscar</button>"+
+      "</form>" +
+      "  </div>"+
+      "<hr>"+
+      "<div id='contTabla' class='row'></div>"  );
+
+
   myVista = this;
 }
 
@@ -394,4 +426,77 @@ Vistas.prototype.renderMainAsist = function () {
 
 Vistas.prototype.formAddRecord = function () {
   $("#mainVisor").html(myVista.htmlForm);
+};
+
+Vistas.prototype.formId = function () {
+  $("#mainVisor").css("display", "block");
+  $("#mainVisor").html(myVista.htmlFormId);
+};
+
+
+Vistas.prototype.showRecordId = function (obj) {
+  var fila ="",
+  tabla = $("<table> <tr>" +
+  "<th>Ientificación</th>" +
+  "<th>Nombre</th>" +
+  "<th>Primer Apellido</th>" +
+  "<th>Segundo Apellido</th>" +
+  "<th>Correo Elctrónico</th>" +
+  "<th>Departamento</th>" +
+  "</tr></table>");
+
+  $(tabla).addClass("table table-striped");
+  $(tabla).attr("id","tablaRegistros");
+
+  fila = $("<tr>"+
+   "<td>" + obj.id + "</td>" +
+   "<td>" + obj.nombre + "</td>" +
+   "<td>" + obj.apellido1 + "</td>" +
+   "<td>" + obj.apellido2 + "</td>" +
+   "<td>" + obj.email + "</td>" +
+   "<td>" + obj.depto + "</td>" +
+   "</tr>" );
+   $(tabla).append(fila);
+    $("#contTabla").html(tabla);
+};
+
+
+Vistas.prototype.ShowformDepto = function () {
+  $("#mainVisor").css("display", "block");
+  $("#mainVisor").html(myVista.htmlFormDepto);
+};
+
+Vistas.prototype.tablaDepto = function (array) {
+
+  var  limite = array.length, fila ="",
+
+  tabla = $("<table> <tr>" +
+  "<th>Ientificación</th>" +
+  "<th>Nombre</th>" +
+  "<th>Primer Apellido</th>" +
+  "<th>Segundo Apellido</th>" +
+  "<th>Correo Elctrónico</th>" +
+  "<th>Departamento</th>" +
+  "</tr></table>");
+
+  $(tabla).addClass("table table-striped");
+  $(tabla).attr("id","tablaRegistros");
+
+for (var i = 0; i < limite; i++) {
+  //Creación de las filas de forma dinánmica
+    fila = $("<tr>"+
+      "<td>" + array[i].id + "</td>" +
+      "<td>" + array[i].nombre + "</td>" +
+      "<td>" + array[i].apellido1 + "</td>" +
+      "<td>" + array[i].apellido2 + "</td>" +
+      "<td>" + array[i].email + "</td>" +
+      "<td>" + array[i].depto + "</td>" +
+      "</tr>" );
+
+     // Una vez creada la fila se agrega en la tabla
+     $(tabla).append(fila);
+};
+
+  //Imprime en el HTML cada párrafo que contiene cada uno de los registros
+  $("#contTabla").html(tabla);
 };

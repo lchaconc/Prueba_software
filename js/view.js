@@ -317,7 +317,7 @@ function Vistas() {
     "  <footer class='sticky-footer'>" +
     "    <div class='container'>" +
     "      <div class='text-center'>" +
-    "        <small>Copyright © 2018 Corporación Valle Fresco S. A.</small>" +
+    "        <small>Copyright © 2018 Valle Fresco</small>" +
     "      </div>" +
     "    </div>" +
     "  </footer>" +
@@ -437,7 +437,7 @@ Vistas.prototype.formId = function () {
 Vistas.prototype.showRecordId = function (obj) {
   var fila ="",
   tabla = $("<table> <tr>" +
-  "<th>Ientificación</th>" +
+  "<th>Identificación</th>" +
   "<th>Nombre</th>" +
   "<th>Primer Apellido</th>" +
   "<th>Segundo Apellido</th>" +
@@ -471,7 +471,7 @@ Vistas.prototype.tablaDepto = function (array) {
   var  limite = array.length, fila ="",
 
   tabla = $("<table> <tr>" +
-  "<th>Ientificación</th>" +
+  "<th>Identificación</th>" +
   "<th>Nombre</th>" +
   "<th>Primer Apellido</th>" +
   "<th>Segundo Apellido</th>" +

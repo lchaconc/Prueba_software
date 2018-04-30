@@ -47,6 +47,7 @@ function verifUser (array) {
 }
 
 function loadModule(opc) {
+      eventos.tarjetas();
       console.log(opc);
   switch (opc) {
 
@@ -67,4 +68,5 @@ function loadModule(opc) {
     eventos.graficos();
     eventos.generales();
     eventos.Nodisponible();
+
 }

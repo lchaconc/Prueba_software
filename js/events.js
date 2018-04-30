@@ -118,3 +118,11 @@ Eventos.prototype.Nodisponible = function () {
       vistas.notAvailable();
   })
 };
+
+Eventos.prototype.tarjetas = function () {
+        vistas.cards();
+        $("#lnkTarjetas").click(function () {
+          console.log("evento click tarjetas");
+            vistas.cards();
+        });
+};

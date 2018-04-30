@@ -55,6 +55,7 @@ function gotoSite(opc) {
       eventos.mostrarformRegistro();
       eventos.eventosBuscarPorId();
       eventos.eventosBuscarPorDepto();
+      eventos.generales();
       break;
     case "asistente":
       eventos.eventosGeneralesAsist();

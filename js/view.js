@@ -413,7 +413,6 @@ function Vistas() {
 }
 
 Vistas.prototype.renderMainAdmin = function () {
-
   $("#page-top").html(this.HtmlMainContentAdmin);
   $("#page-top").append(this.htmlWraper);
 };
@@ -464,6 +463,7 @@ Vistas.prototype.showRecordId = function (obj) {
 Vistas.prototype.ShowformDepto = function () {
   $("#mainVisor").css("display", "block");
   $("#mainVisor").html(myVista.htmlFormDepto);
+  $("#btnBuscarPorDepto").css({"margin-left": "17px","margin-top": "7px"});
 };
 
 Vistas.prototype.tablaDepto = function (array) {
@@ -482,8 +482,8 @@ Vistas.prototype.tablaDepto = function (array) {
   $(tabla).addClass("table table-striped");
   $(tabla).attr("id","tablaRegistros");
 
-for (var i = 0; i < limite; i++) {
-  //Creación de las filas de forma dinánmica
+  for (var i = 0; i < limite; i++) {
+    //Creación de las filas de forma dinánmica
     fila = $("<tr>"+
       "<td>" + array[i].id + "</td>" +
       "<td>" + array[i].nombre + "</td>" +
@@ -495,7 +495,7 @@ for (var i = 0; i < limite; i++) {
 
      // Una vez creada la fila se agrega en la tabla
      $(tabla).append(fila);
-};
+   };
 
   //Imprime en el HTML cada párrafo que contiene cada uno de los registros
   $("#contTabla").html(tabla);

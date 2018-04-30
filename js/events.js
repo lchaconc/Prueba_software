@@ -109,5 +109,12 @@ Eventos.prototype.generales = function () {
 Eventos.prototype.graficos = function () {
     $("#linkGraficos").click(function () {
       vistas.showGraphics();
-    })
+    });
+};
+
+
+Eventos.prototype.Nodisponible = function () {
+  $("#lnkBaseDatos").click(function () {
+      vistas.notAvailable();
+  })
 };

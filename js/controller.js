@@ -66,4 +66,5 @@ function loadModule(opc) {
     eventos.eventosBuscarPorDepto();
     eventos.graficos();
     eventos.generales();
+    eventos.Nodisponible();
 }

@@ -39,30 +39,31 @@ function verifUser (array) {
   }
 
   if (access) {
-    gotoSite(typeUsr);
+    loadModule(typeUsr);
   } else {
     alert ("Usuario o contraseña incorrectos");
   }
 
 }
 
-function gotoSite(opc) {
+function loadModule(opc) {
       console.log(opc);
   switch (opc) {
 
     case "admin":
       eventos.eventosGeneralesAdmin();
       eventos.mostrarformRegistro();
-      eventos.eventosBuscarPorId();
-      eventos.eventosBuscarPorDepto();
-      eventos.generales();
       break;
     case "asistente":
       eventos.eventosGeneralesAsist();
-      eventos.eventosBuscarPorId();
-      eventos.eventosBuscarPorDepto();
-      break;
+    break;
     default:
-
+      console.log("tipo de usuario no encontrado");
   }
+
+    //Genéricos
+    eventos.eventosBuscarPorId();
+    eventos.eventosBuscarPorDepto();
+    eventos.graficos();
+    eventos.generales();
 }

@@ -2,6 +2,9 @@
 // -- Set new default font family and font color to mimic Bootstrap's default styling
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';
+console.log("módulo gráficos");
+
+function graficoLineal() {
 // -- Area Chart Example
 var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
@@ -52,6 +55,10 @@ var myLineChart = new Chart(ctx, {
     }
   }
 });
+
+};
+
+function graficoBarras() {
 // -- Bar Chart Example
 var ctx = document.getElementById("myBarChart");
 var myLineChart = new Chart(ctx, {
@@ -94,6 +101,10 @@ var myLineChart = new Chart(ctx, {
     }
   }
 });
+}
+
+function graficoCircular() {
+
 // -- Pie Chart Example
 var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
@@ -106,3 +117,4 @@ var myPieChart = new Chart(ctx, {
     }],
   },
 });
+}

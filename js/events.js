@@ -103,5 +103,11 @@ Eventos.prototype.generales = function () {
       scrollTop: ($($anchor.attr('href')).offset().top)
     }, 1000, 'easeInOutExpo');
     event.preventDefault();
-  });  
+  });
+};
+
+Eventos.prototype.graficos = function () {
+    $("#linkGraficos").click(function () {
+      vistas.showGraphics();
+    })
 };

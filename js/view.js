@@ -18,7 +18,7 @@ function Vistas() {
     "    <li class='nav-item' data-toggle='tooltip' data-placement='right' title='Charts'>"+
     "      <a class='nav-link' href='#'>"+
     "        <i class='fa fa-fw fa-area-chart'></i>"+
-    "        <span class='nav-link-text'>Gráficos</span>"+
+    "        <span class='nav-link-text' id='linkGraficos'>Gráficos</span>"+
     "      </a>"+
     "    </li>"+
     "    <li class='nav-item' data-toggle='tooltip' data-placement='right' title='TablesId'>"+
@@ -177,7 +177,7 @@ function Vistas() {
     "    <li class='nav-item' data-toggle='tooltip' data-placement='right' title='Charts'>"+
     "      <a class='nav-link' href='#'>"+
     "        <i class='fa fa-fw fa-area-chart'></i>"+
-    "        <span class='nav-link-text'>Gráficos</span>"+
+    "        <span class='nav-link-text' id='linkGraficos' >Gráficos</span>"+
     "      </a>"+
     "    </li>"+
     "    <li class='nav-item' data-toggle='tooltip' data-placement='right' title='TablesId'>"+
@@ -407,6 +407,43 @@ function Vistas() {
       "  </div>"+
       "<hr>"+
       "<div id='contTabla' class='row'></div>"  );
+  this.htmlGraficos = $(
+  "  <div class='container-fluid'>"+
+  "  <!-- Area Chart Example--> "+
+  "  <div class='card mb-3'> "+
+  "    <div class='card-header'>"+
+  "      <i class='fa fa-area-chart'></i> Area Chart Example</div>"+
+  "    <div class='card-body'>"+
+  "      <canvas id='myAreaChart' width='100%' height='30'></canvas>"+
+  "    </div>"+
+  "    <div class='card-footer small text-muted'>Updated yesterday at 11:59 PM</div>"+
+  "  </div>"+
+  "  <div class=row>"+
+  "    <div class=col-lg-8>"+
+  "      <!-- Example Bar Chart Card-->"+
+  "      <div class=card mb-3>"+
+  "        <div class=card-header>"+
+  "          <i class=fa fa-bar-chart></i> Bar Chart Example</div>"+
+  "        <div class=card-body>"+
+  "          <canvas id=myBarChart width=100 height=50></canvas>"+
+  "        </div>"+
+  "        <div class=card-footer small text-muted>Updated yesterday at 11:59 PM</div>"+
+  "      </div>"+
+  "    </div>"+
+  "    <div class=col-lg-4>"+
+  "      <!-- Example Pie Chart Card-->"+
+  "      <div class=card mb-3>"+
+  "        <div class=card-header>"+
+  "          <i class=fa fa-pie-chart></i> Pie Chart Example</div>"+
+  "        <div class=card-body>"+
+  "          <canvas id=myPieChart width='100%' height='100'></canvas>"+
+  "        </div>"+
+  "        <div class='card-footer small text-muted'>Updated yesterday at 11:59 PM</div>"+
+  "      </div>"+
+  "    </div>"+
+  "  </div>"+
+  "  </div>"
+  );
 
 
   myVista = this;
@@ -499,4 +536,12 @@ Vistas.prototype.tablaDepto = function (array) {
 
   //Imprime en el HTML cada párrafo que contiene cada uno de los registros
   $("#contTabla").html(tabla);
+};
+
+
+Vistas.prototype.showGraphics = function () {
+    $("#mainVisor").html(myVista.htmlGraficos);
+    graficoLineal();
+    graficoBarras();
+    graficoCircular();
 };

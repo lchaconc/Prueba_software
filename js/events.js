@@ -126,3 +126,10 @@ Eventos.prototype.tarjetas = function () {
             vistas.cards();
         });
 };
+
+Eventos.prototype.acercaDe = function () {
+    $("#spnAcerca").click(function () {
+      vistas.about();
+    })
+
+};

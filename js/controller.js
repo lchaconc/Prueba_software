@@ -47,7 +47,7 @@ function verifUser (array) {
 }
 
 function loadModule(opc) {
-      eventos.tarjetas();
+
       console.log(opc);
   switch (opc) {
 
@@ -63,10 +63,13 @@ function loadModule(opc) {
   }
 
     //Genéricos
+
     eventos.eventosBuscarPorId();
     eventos.eventosBuscarPorDepto();
     eventos.graficos();
     eventos.generales();
     eventos.Nodisponible();
+    eventos.tarjetas();
+    eventos.acercaDe();
 
 }
